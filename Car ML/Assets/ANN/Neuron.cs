@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using System.Collections.Generic;
+/// <summary>
+/// Store information about weights, inputs, bias, error
+/// </summary>
 public class Neuron {
 
-	public int numInputs;
-	public double bias;
-	public double output;
-	public double errorGradient;
-	public List<double> weights = new List<double>();
-	public List<double> inputs = new List<double>();
+    public int numInputs; //how many inputs come in neuron
+    public double bias; //extra weight
+    public double output;
+    public double errorGradient;
+    public List<double> weights = new List<double>();
+    public List<double> inputs = new List<double>(); //all of inputs
 
-	public Neuron(int nInputs)
+    public Neuron(int nInputs)
 	{
 		float weightRange = (float) 2.4/(float) nInputs;
 		bias = UnityEngine.Random.Range(-weightRange,weightRange);

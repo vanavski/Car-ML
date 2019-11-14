@@ -5,9 +5,9 @@ using System.IO;
 using System.Text;
 
 /// <summary>
-/// Add data to file to teach algorithm how work
+/// Gathering data to file to teach algorithm how to work
 /// </summary>
-public class Drive : MonoBehaviour
+public class GatheringDataDriver : MonoBehaviour
 {
     //если в проекте нет trainingData.txt файла, нужно запустить проект и проехать на машине один/два круга
     //чтобы создать и забить файл тренировочными данными. Ќа этих данных другой алгоритм будет обучатьс€ ездить.
@@ -28,8 +28,7 @@ public class Drive : MonoBehaviour
 
     StringBuilder stringBuilder;
 
-    //raycasts
-    RaycastHit hit;
+    
     float forwardDist = 0, rightDist = 0, leftDist = 0, right45Dist = 0, left45Dist = 0;
     #endregion;
 
@@ -84,12 +83,16 @@ public class Drive : MonoBehaviour
         Debug.DrawRay(transform.position, Quaternion.AngleAxis(45, Vector3.up) * -transform.right * visibleDistance, Color.green);
         //look right
         Debug.DrawRay(transform.position, Quaternion.AngleAxis(-45, Vector3.up) * transform.right * visibleDistance, Color.green);
+
+        #region Calculate distances
+        //raycasts
+        RaycastHit hit;
+
         //forward
         if (Physics.Raycast(transform.position, transform.forward, out hit, visibleDistance))
             forwardDist = 1 - Round(hit.distance / visibleDistance);
-
-
-        #region Calculate distances
+        
+        forwardDist = 0; rightDist = 0; leftDist = 0; right45Dist = 0; left45Dist = 0;
 
         //right
         if (Physics.Raycast(transform.position, transform.right, out hit, visibleDistance))
@@ -130,8 +133,8 @@ public class Drive : MonoBehaviour
                 collectedTrainingData.Add(stringBuilder.ToString());
             }
         }
-
-
+        
+        #region commented
         //trainingData = forwardDist + "," + rightDist + "," + leftDist + "," +
         //              right45Dist + "," + left45Dist + "," +
         //              Round(translationInputButton) + "," + Round(rotationInputButton);
@@ -144,7 +147,7 @@ public class Drive : MonoBehaviour
         //        collectedTrainingData.Add(trainingData);
         //    }
         //}
-
+        #endregion
 
     }
 
