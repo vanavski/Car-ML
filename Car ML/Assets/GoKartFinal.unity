@@ -866,7 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   rotationSpeed: 100
-  visibleDistance: 50
+  visibleDistance: 100
 --- !u!1 &961186399
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,13 +971,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0577098a7c2e4044add67bcd42de4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleDistance: 50
-  epochs: 1000
+  visibleDistance: 100
+  epochs: 10000
   speed: 50
   rotationSpeed: 100
   translation: 0
   rotation: 0
-  loadFromFile: 0
+  loadWeightsFromFile: 1
 --- !u!4 &1121218721
 Transform:
   m_ObjectHideFlags: 0

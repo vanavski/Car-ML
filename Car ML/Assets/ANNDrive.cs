@@ -21,7 +21,7 @@ public class ANNDrive : MonoBehaviour
     public float translation;
     public float rotation;
 
-    public bool loadFromFile = true;
+    public bool loadWeightsFromFile = false;
 
     List<double> calcOutputs;
     List<double> inputs;
@@ -29,12 +29,12 @@ public class ANNDrive : MonoBehaviour
 
     #endregion
 
-
+    #region Methods
     // Use this for initialization
     void Start()
     {
-        ann = new ANN(5, 2, 1, 10, 0.5); //create perceptron
-        if (loadFromFile)
+        ann = new ANN(5, 2, 2, 10, 0.5); //create perceptron
+        if (loadWeightsFromFile)
         {
             LoadWeightsFromFile();
             trainingDone = true;
@@ -56,8 +56,8 @@ public class ANNDrive : MonoBehaviour
     /// <returns></returns>
     IEnumerator LoadTrainingSet()
     {
-        //string path = Application.dataPath + "/trainingDataStripped.txt"; //use it for the best training set
-        string path = Application.dataPath + "/trainingData.txt";
+        string path = Application.dataPath + "/trainingDataStripped.txt"; //use it for the best training set
+        //string path = Application.dataPath + "/trainingData.txt";
         string line;
         if (File.Exists(path))
         {
@@ -253,4 +253,5 @@ public class ANNDrive : MonoBehaviour
         transform.Translate(0, 0, translation);
         transform.Rotate(0, rotation, 0);
     }
+    #endregion
 }
